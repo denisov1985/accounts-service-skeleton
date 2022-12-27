@@ -16,6 +16,7 @@ class GetRoleByIdQueryHandler
         $qb->with(...$query->getIncludes());
 
         try {
+            // why not to use repository from domain with find method ?
             return $qb->findOrFail((string)$query->getId());
         } catch (ReadModelNotFound) {
             throw EntityNotFoundException::entityNotFound(Role::class, (string)$query->getId());
