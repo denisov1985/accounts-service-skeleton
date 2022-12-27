@@ -26,6 +26,7 @@ class CreateUserCommandHandler
 
     public function __invoke(CreateUser $command)
     {
+        // Could you please explaine a purpose of this line below ? I dont understand.
         $this->queryBus->execute(new GetAccountById($command->getAccount()->toUuid()));
 
         $user = User::create(
